@@ -8,7 +8,7 @@ label: "Google Analytics 4"
 
 
 datagroup: ga4_main_datagroup {
-  sql_trigger:  SELECT CURRENT_DATE();;
+  sql_trigger:  select max(event_timestamp) from `alien-grove-412814.analytics_345865989.events_*`;;
   max_cache_age: "3 hour"
 }
 
