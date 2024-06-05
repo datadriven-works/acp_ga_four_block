@@ -98,7 +98,7 @@
     height: 2
   - title: Prediction Split by Revenue (USD)
     name: Prediction Split by Revenue (USD)
-    model: ga4
+    model: acp_ga4
     explore: sessions
     type: looker_grid
     fields: [future_purchase_prediction.pred_probability_bucket, purchase_average_usd,
@@ -202,7 +202,7 @@
     height: 4
   - title: Low Prob user_ids
     name: Low Prob user_ids
-    model: ga4
+    model: acp_ga4
     explore: sessions
     type: single_value
     fields: [future_purchase_prediction.count]
@@ -234,7 +234,7 @@
     height: 2
   - title: Medium Prob cust_ids
     name: Medium Prob cust_ids
-    model: ga4
+    model: acp_ga4
     explore: sessions
     type: single_value
     fields: [future_purchase_prediction.count]
@@ -266,7 +266,7 @@
     height: 2
   - title: High Prob cust_ids
     name: High Prob cust_ids
-    model: ga4
+    model: acp_ga4
     explore: sessions
     type: single_value
     fields: [future_purchase_prediction.count]
@@ -298,7 +298,7 @@
     height: 2
   - title: Rolling 90 day Person Count by Predicted Bucket Across Weeks
     name: Rolling 90 day Person Count by Predicted Bucket Across Weeks
-    model: ga4
+    model: acp_ga4
     explore: incremental_prediction
     type: looker_line
     fields: [incremental_prediction.week, incremental_prediction.pred_probability_bucket,
@@ -364,7 +364,7 @@
     height: 6
   - title: Rolling 90 day Revenue (USD) by Predicted Bucket Across Weeks
     name: Rolling 90 day Revenue (USD) by Predicted Bucket Across Weeks
-    model: ga4
+    model: acp_ga4
     explore: incremental_prediction
     type: looker_line
     fields: [incremental_prediction.week, incremental_prediction.pred_probability_bucket,
@@ -438,7 +438,7 @@
       type: relative_timeframes
       display: inline
       options: []
-    model: ga4
+    model: acp_ga4
     explore: sessions
     listens_to_filters: []
     field: sessions.session_date

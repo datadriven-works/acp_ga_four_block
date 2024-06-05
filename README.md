@@ -1,5 +1,9 @@
 # Google Analytics 4
 
+## Source:
+
+https://github.com/looker-open-source/ga_four_block
+
 ## What does this Looker Block do for me?
 
 This block allows GA4 users to continue to view the dashboards and metrics that they are familiar with from GA360.
@@ -25,7 +29,7 @@ For anyone moving to GA4 from GA360, this represents a shift in scope. GA360 exp
 Each row in the event tables is a record of one event. There are several standard columns: event_date, event_timestamp, event_name, user_pseudo_id, for a full list of fields exported by default, see https://support.google.com/firebase/answer/7029846. In addition to single-value fields, there are nested fields as well.
 
 The simpler nested fields can be referenced with dot-notation sql definitions, as shown in this example of the “ECommerce Purchase Revenue” dimension:
-````  
+````
   dimension: ecommerce__purchase_revenue {
     type: number
     sql: ${TABLE}.ecommerce.purchase_revenue ;;
@@ -33,7 +37,7 @@ The simpler nested fields can be referenced with dot-notation sql definitions, a
     group_item_label: "Purchase Revenue"
     value_format_name: usd
   }
-````  
+````
 Here, “purchase_revenue” is an element of the ecommerce field.
 
 However, Some elements within GA4 are packaged as repeating key/value pairs such as the “event_params” field:
@@ -249,7 +253,7 @@ Similar to how the landing and exit pages are obtained at the session-level, we 
     where event_history.page_view_rank = 3
     and event_history.event_name = "page_view" limit 1) ;;
   }
- ```` 
+ ````
 
 If we look at the sql here, and remove the regular expression elements, this is what is occurring:
 The sessions table is linked to the events table on the model on the SL_KEY.

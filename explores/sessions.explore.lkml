@@ -4,7 +4,7 @@ include: "/views/*/*/*.view.lkml"
 include: "/attributes/*.lkml"
 
 explore: sessions {
-  label: "GA4 Sessions Beta"
+  label: "GA4 Sessions - ACP"
   description: "Explores Google Analytics sessions data."
 
   join: audience_cohorts {
@@ -123,5 +123,9 @@ explore: sessions {
   #  relationship: many_to_one
   #  view_label: "ARIMA"
   #}
+  join: acp_user {
+    sql_on: ${events.user_pseudo_id}=${acp_user.ga_user_pseudo_id};;
+    relationship: many_to_one
+  }
 
 }

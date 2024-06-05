@@ -125,6 +125,91 @@ view: event_data_event_params {
     full_suggestions: yes
   }
 
+  #########
+
+  dimension: event_param_link_url_host {
+    group_label: "Event: Parameters"
+    label: "Link URL Host"
+    description: "Host of Link URL"
+    full_suggestions: yes
+    type: string
+    sql: NET.HOST((SELECT value.string_value FROM UNNEST(event_params) WHERE key = "link_url")) ;;
+  }
+
+  dimension: event_param_link_url_page {
+    group_label: "Event: Parameters"
+    label: "Link URL Page"
+    description: "The path of the Link URL."
+    full_suggestions: yes
+    type: string
+    sql: coalesce(regexp_extract((SELECT value.string_value FROM UNNEST(event_params) WHERE key = "link_url"),r"(?:.*?[\.][^\/]*)([\/][^\?#]+)"),'/') ;;
+  }
+
+  dimension: event_param_link_url_page_location {
+    group_label: "Event: Parameters"
+    label: "Link URL Page Location"
+    type: string
+    sql: (SELECT value.string_value FROM UNNEST(event_params) WHERE key = "link_url") ;;
+    full_suggestions: yes
+  }
+
+  dimension: filename {
+    group_label: "Link URL"
+    label: "Filename"
+    type: string
+    sql: REGEXP_EXTRACT(${event_param_link_url_page_location}, r'[^/]+$') ;;
+    full_suggestions: yes
+  }
+
+  dimension: file_type {
+    group_label: "Link URL"
+    label: "File Type"
+    type: string
+    sql: REGEXP_EXTRACT(${event_param_link_url_page_location}, r'\.(\w+)$') ;;
+    full_suggestions: yes
+  }
+
+  dimension: year {
+    group_label: "Link URL"
+    label: "Year"
+    type: string
+    sql: REGEXP_EXTRACT(${event_param_link_url_page_location}, r'/(\d{4})/') ;;
+    full_suggestions: yes
+  }
+
+  dimension: month {
+    group_label: "Link URL"
+    label: "Month"
+    type: string
+    sql: REGEXP_EXTRACT(${event_param_link_url_page_location}, r'/\d{4}/(\d{2})/') ;;
+    full_suggestions: yes
+  }
+
+  dimension: remainder_path {
+    group_label: "Link URL"
+    label: "Remainder Path"
+    type: string
+    sql: IFNULL(
+          NULLIF(
+            REGEXP_REPLACE(${event_param_link_url_page_location}, r'/(?:\d{4}/\d{2}/[^/]+)$', ''),
+            ${event_param_link_url_page_location}
+          ),
+          REGEXP_REPLACE(${event_param_link_url_page_location}, r'/[^/]+$', '')
+        ) ;;
+    full_suggestions: yes
+  }
+
+  dimension: remainder {
+    group_label: "Link URL"
+    label: "Remainder"
+    type: string
+    sql: REGEXP_EXTRACT(${remainder_path}, r'^(?:https?://[^/]+)(.*)$') ;;
+    full_suggestions: yes
+  }
+
+
+  #########
+
   dimension: event_param_page_title {
     group_label: "Event: Parameters"
     label: "Page Title"

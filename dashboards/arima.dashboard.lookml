@@ -87,7 +87,7 @@
   - name: ARIMA Model
     title: ARIMA Model
     merged_queries:
-    - model: ga4
+    - model: acp_ga4
       explore: sessions
       type: looker_line
       fields: [forecasting.forecast_timestamp, forecasting.prediction_interval_lower_bound,
@@ -138,7 +138,7 @@
       conditional_formatting_include_nulls: false
       defaults_version: 1
       join_fields: []
-    - model: ga4
+    - model: acp_ga4
       explore: sessions
       type: looker_line
       fields: [sum_of_session_event_count, events.event_time_date, sessions.total_sessions]
@@ -261,7 +261,7 @@
     height: 8
   - title: Model Evaluation
     name: Model Evaluation
-    model: ga4
+    model: acp_ga4
     explore: model_evaluation
     type: looker_grid
     fields: [model_evaluation.events_event_name, model_evaluation.AIC, model_evaluation.log_likelihood,
@@ -299,7 +299,7 @@
     height: 3
   - title: AR
     name: AR
-    model: ga4
+    model: acp_ga4
     explore: model_evaluation
     type: single_value
     fields: [model_evaluation.non_seasonal_p]
@@ -341,7 +341,7 @@
     height: 4
   - title: Integrated
     name: Integrated
-    model: ga4
+    model: acp_ga4
     explore: model_evaluation
     type: single_value
     fields: [model_evaluation.non_seasonal_d]
@@ -384,7 +384,7 @@
     height: 4
   - title: Moving Averages
     name: Moving Averages
-    model: ga4
+    model: acp_ga4
     explore: model_evaluation
     type: single_value
     fields: [model_evaluation.non_seasonal_q]
@@ -427,7 +427,7 @@
     height: 4
   - title: Lower Bound
     name: Lower Bound
-    model: ga4
+    model: acp_ga4
     explore: sessions
     type: single_value
     fields: [forecasting.forecast_timestamp, forecasting.forecast_value, forecasting.prediction_interval_lower_bound,
@@ -476,7 +476,7 @@
     height: 3
   - title: Users Expected Tomorrow (Copy)
     name: Users Expected Tomorrow (Copy)
-    model: ga4
+    model: acp_ga4
     explore: sessions
     type: single_value
     fields: [forecasting.forecast_timestamp, forecasting.forecast_value, forecasting.prediction_interval_lower_bound,
@@ -512,7 +512,7 @@
     height: 6
   - title: Upper Bound
     name: Upper Bound
-    model: ga4
+    model: acp_ga4
     explore: sessions
     type: single_value
     fields: [forecasting.forecast_timestamp, forecasting.forecast_value, forecasting.prediction_interval_lower_bound,
@@ -557,7 +557,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: ga4
+    model: acp_ga4
     explore: sessions
     listens_to_filters: []
     field: events.event_name

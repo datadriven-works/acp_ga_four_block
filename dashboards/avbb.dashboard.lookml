@@ -88,7 +88,7 @@
 
   - title: Feature Attribution for Revenue
     name: Feature Attribution for Revenue
-    model: ga4
+    model: acp_ga4
     explore: model_explanation
     type: looker_bar
     fields: [model_explanation.attribution, model_explanation.feature]
@@ -140,7 +140,7 @@
     height: 8
   - title: Category Attribution for Revenue
     name: Category Attribution for Revenue
-    model: ga4
+    model: acp_ga4
     explore: category_attribution
     type: looker_grid
     fields: [category_attribution.processed_input, category_attribution.category,
@@ -224,7 +224,7 @@
     height: 7
   - title: Top Variables
     name: Top Variables
-    model: ga4
+    model: acp_ga4
     explore: category_attribution
     type: looker_column
     fields: [category_attribution.processed_input, category_attribution.weight, category_attribution.category,
@@ -340,7 +340,7 @@
     height: 2
   - title: Mean Absolute Error
     name: Mean Absolute Error
-    model: ga4
+    model: acp_ga4
     explore: evaluation
     type: single_value
     fields: [evaluation.MAE]
@@ -370,7 +370,7 @@
     height: 6
   - title: MSLE
     name: MSLE
-    model: ga4
+    model: acp_ga4
     explore: evaluation
     type: single_value
     fields: [evaluation.MSLE]
@@ -400,7 +400,7 @@
     height: 6
   - title: R2 Score
     name: R2 Score
-    model: ga4
+    model: acp_ga4
     explore: evaluation
     type: single_value
     fields: [evaluation.r_squared]
@@ -451,7 +451,7 @@
     ui_config:
       type: checkboxes
       display: popover
-    model: ga4
+    model: acp_ga4
     explore: category_attribution
     listens_to_filters: []
     field: category_attribution.processed_input

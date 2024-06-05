@@ -1,13 +1,13 @@
-project_name: "ga_four"
+project_name: "acp_ga4"
 
 ## Connection Constants:
 constant: GA4_CONNECTION {
-  value: ""
-  export: override_required
+  value: "acp"
+  # export: override_required
 }
 
 constant: GA4_SCHEMA {
-  value: "ga4_export"
+  value: "analytics_345865989"
   export: override_optional
 }
 

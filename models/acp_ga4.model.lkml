@@ -21,4 +21,11 @@ datagroup: ga4_attribution_channel {
   sql_trigger: SELECT 1 ;;
 }
 
+datagroup: acp_default_datagroup{
+  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  max_cache_age: "1 hour"
+  sql_trigger: SELECT MAX(log_id) FROM ${wp_cpo_activity.SQL_TABLE_NAME} ;;
+}
+
+
 persist_with: ga4_main_datagroup

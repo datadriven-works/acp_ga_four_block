@@ -83,7 +83,7 @@
 
   - title: Model Performance Metrics
     name: Model Performance Metrics
-    model: ga4
+    model: acp_ga4
     explore: future_purchase_model_evaluation
     type: looker_grid
     fields: [future_purchase_model_evaluation.accuracy, future_purchase_model_evaluation.f1_score,
@@ -152,7 +152,7 @@
     height: 4
   - title: Training Iterations
     name: Training Iterations
-    model: ga4
+    model: acp_ga4
     explore: future_purchase_model_training_info
     type: looker_grid
     fields: [future_purchase_model_training_info.duration_ms, future_purchase_model_training_info.eval_loss,
@@ -185,7 +185,7 @@
     height: 4
   - title: Confusion Matrix
     name: Confusion Matrix
-    model: ga4
+    model: acp_ga4
     explore: confusion_matrix
     type: marketplace_viz_report_table::report_table-marketplace
     fields: [confusion_matrix.Expected_label, confusion_matrix.Predicted_0, confusion_matrix.Predicted_1]
@@ -267,7 +267,7 @@
     height: 4
   - title: Feature Importance
     name: Feature Importance
-    model: ga4
+    model: acp_ga4
     explore: feature_importance
     type: looker_grid
     fields: [feature_importance.feature, feature_importance.attribution]
@@ -382,7 +382,7 @@
       type: relative_timeframes
       display: inline
       options: []
-    model: ga4
+    model: acp_ga4
     explore: sessions
     listens_to_filters: []
     field: sessions.session_date
