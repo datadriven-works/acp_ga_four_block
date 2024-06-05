@@ -566,6 +566,7 @@ extends: [event_funnel, page_funnel]
     type: count_distinct
     sql: ${user_pseudo_id} ;;
     value_format_name: formatted_number
+    drill_fields: [user_pseudo_id]
   }
   #measure: total_event_count {
   #  type: sum
@@ -583,6 +584,7 @@ extends: [event_funnel, page_funnel]
     sql: ${user_pseudo_id} ;;
     filters: [session_data_is_first_visit_session: "yes"]
     value_format_name: formatted_number
+    drill_fields: [user_pseudo_id]
   }
 
   measure: total_returning_users {
@@ -594,6 +596,7 @@ extends: [event_funnel, page_funnel]
     sql: ${user_pseudo_id} ;;
     filters: [session_data_is_first_visit_session: "no"]
     value_format_name: formatted_number
+    drill_fields: [user_pseudo_id]
   }
 
   measure: percentage_new_users {

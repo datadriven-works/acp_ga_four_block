@@ -124,6 +124,7 @@ explore: sessions {
   #  view_label: "ARIMA"
   #}
   join: acp_user {
+    type: left_outer
     sql_on: ${events.user_pseudo_id}=${acp_user.ga_user_pseudo_id};;
     relationship: many_to_one
   }

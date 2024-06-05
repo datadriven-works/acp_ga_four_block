@@ -6,7 +6,8 @@ view: acp_user {
       FROM (
         SELECT
           *,
-          ROW_NUMBER() OVER (PARTITION BY ga_client_id ORDER BY log_id DESC) AS rn
+          REGEXP_EXTRACT(ga_client_id, r'^GA\d+\.\d+\.(.*)$') as ga_user_pseudo_id,
+          ROW_NUMBER() OVER (PARTITION BY REGEXP_EXTRACT(ga_client_id, r'^GA\d+\.\d+\.(.*)$') ORDER BY log_id DESC) AS rn
         FROM
           ${member_snapshots.SQL_TABLE_NAME}
         WHERE user_id IS NOT NULL
@@ -30,8 +31,9 @@ view: acp_user {
   }
 
   dimension: ga_user_pseudo_id {
+    primary_key: yes
     type: string
-    sql: REGEXP_EXTRACT(${ga_client_id}, r'^GA\d+\.\d+\.(.*)$') ;;
+    sql: ${TABLE}.ga_user_pseudo_id ;;
   }
 
   dimension: authorized {
