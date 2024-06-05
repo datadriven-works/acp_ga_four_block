@@ -25,7 +25,7 @@ JOIN (
   GROUP BY sl2.sl_key, sl2.session_date
 ) AS min_events ON sl.sl_key = min_events.sl_key AND sl.session_date = min_events.session_date
 WHERE sl.event_timestamp = min_events.min_event_timestamp
-and {% incrementcondition %} session_date {% endincrementcondition %};;
+and {% incrementcondition %} sl.session_date {% endincrementcondition %};;
   }
   dimension: session_date {
     type: date

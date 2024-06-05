@@ -530,7 +530,12 @@ view: events {
     full_suggestions: yes
   }
 
-  # dimension: user_id
+  dimension: user_id {
+    description: "user_id reported back from ACP to GA4"
+    type: string
+    sql: ${TABLE}.user_id ;;
+    full_suggestions: yes
+  }
 
 ## Measures
 
